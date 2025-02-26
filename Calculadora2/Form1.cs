@@ -17,6 +17,18 @@ namespace Calculadora2
             InitializeComponent();
         }
 
+        void TravarBotao()
+        {
+            /*if ((lblOper.Text == btDiv.Text && numOper2.Value == 0)
+                || lblOper.Text == "...")
+                btIgual.Enabled = false;
+            else 
+                btIgual.Enabled = true;*/
+            btIgual.Enabled = 
+                !((lblOper.Text == btDiv.Text && numOper2.Value == 0)
+                || lblOper.Text == "...");
+        }
+
         void AtribuirOperacao(string oper)
         {
             lblOper.Text = oper;
@@ -41,6 +53,7 @@ namespace Calculadora2
         private void btDiv_Click(object sender, EventArgs e)
         {
             AtribuirOperacao(btDiv.Text);
+            TravarBotao();
         }
 
         private void btIgual_Click(object sender, EventArgs e)
@@ -60,6 +73,11 @@ namespace Calculadora2
 
             lblResultado.Text = resultado.ToString();
 
+        }
+
+        private void numOper2_ValueChanged(object sender, EventArgs e)
+        {
+            TravarBotao();
         }
     }
 }
